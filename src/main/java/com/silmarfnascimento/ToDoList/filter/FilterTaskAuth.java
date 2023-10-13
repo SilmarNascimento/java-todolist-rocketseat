@@ -29,7 +29,7 @@ public class FilterTaskAuth extends OncePerRequestFilter {
       throws ServletException, IOException {
     // recuperar o token de identificação
     var serveletPath = request.getServletPath();
-    if (serveletPath.equals("/tasks")) {
+    if (serveletPath.startsWith("/tasks")) {
       var authorizationEncoded = request.getHeader("Authorization").substring("Basic".length()).trim();
 
       // extrair as informações contidas no token
