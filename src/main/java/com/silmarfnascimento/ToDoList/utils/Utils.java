@@ -9,11 +9,11 @@ import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 
 public class Utils {
-  public void copyNonNullProperties(Object source, Object target) {
+  public static void copyNonNullProperties(Object source, Object target) {
     BeanUtils.copyProperties(source, target, getNullPropertyName(source));
   }
 
-  public String[] getNullPropertyName(Object source) {
+  public static String[] getNullPropertyName(Object source) {
     final BeanWrapper src = new BeanWrapperImpl(source);
     PropertyDescriptor[] pds = src.getPropertyDescriptors();
 
