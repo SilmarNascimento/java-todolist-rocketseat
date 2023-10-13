@@ -1,6 +1,7 @@
 package com.silmarfnascimento.ToDoList.task;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,11 @@ public class TaskController {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("A data inicial deve ser antes da data de término");
     }
     return ResponseEntity.status(HttpStatus.OK).body(taskModel);
+  }
+
+  public List<TaskModel> list(HttpServletRequest request) {
+    Object idUser = request.getAttribute("idUser");
+    List<TaskModel> userTasks = this.taskRepository.findByIdUser((UUID) idUser);
+    return userTasks;
   }
 }
